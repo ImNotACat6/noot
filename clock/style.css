@@ -1,5 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Mali:700&display=swap");
 
+:root {
+	--bg-color: #fff;
+	--text-color: #f58f70;
+	--sec-color: #37352f;
+	--border-color: #37352f;
+}
+
+[clock-data-theme="dark"] {
+	--bg-color: #191919;
+	--text-color: #9f9f9f;
+	--sec-color: #fff;
+	--border-color: #fff;
+}
+
+
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -7,7 +23,7 @@
 }
 body {
   min-height: 100vh;
-  background: #faf1f5;
+  background: var(--text-color);
   color: #3a3a3a;
   display: flex;
   font-family: "Mali", sans-serif;
