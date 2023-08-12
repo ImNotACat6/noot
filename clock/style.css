@@ -11,7 +11,7 @@
 	--no-text-color: #c3e7ff;
 	--no-sec-color: #fff;
 	--no-border-color: #fff;
-  --shadow-color: #00000060;
+  --shadow-color: #00000067;
 }
 
 
@@ -27,32 +27,24 @@ body {
   align-items: center;
   justify-content: center;
 
-
-  min-height: 100vh;
+  width: calc(100vw - 16px);
+  margin: 8px;
+  
+  min-height: calc(100vh - 24px);
 
   background: var(--no-bg-color);
   color: var(--no-text-color);
 
   
-
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
   
   
 }
 
 #clock {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
 
-  width: 100vh;
 
-  margin: 16px;
-  height: calc(100vh - 32px);
-
-  box-shadow: 0 4px 8px 0 var(--shadow-color);
-}
-
-#clock_text {
   font-family: "space-grotesk-variable", sans-serif;
   font-variation-settings: "wght" 700;
 
