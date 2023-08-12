@@ -21,7 +21,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: var(--no-bg-color);
+  background: var(--no-bg-color);
 }
 
 body {
@@ -50,5 +50,5 @@ body {
   font-family: "space-grotesk-variable", sans-serif;
   font-variation-settings: "wght" 700;
 
-  font-size: 64px;
+  font-size: 32px;
 }
