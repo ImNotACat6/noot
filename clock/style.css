@@ -3,13 +3,15 @@
 	--no-text-color: #f58f70;
 	--no-sec-color: #37352f;
 	--no-border-color: #37352f;
+  --shadow-color: #00000033;
 }
 
 [theme="dark"] {
-	--no-bg-color: #2d2e2e;
-	--no-text-color: #9f9f9f;
+	--no-bg-color: #191919;
+	--no-text-color: #c3e7ff;
 	--no-sec-color: #fff;
 	--no-border-color: #fff;
+  --shadow-color: #00000060;
 }
 
 
@@ -21,10 +23,38 @@
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
   min-height: 100vh;
+
   background: var(--no-bg-color);
   color: var(--no-text-color);
+
+  
+
+  
+  
+}
+
+#clock {
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vh;
+
+  margin: 16px;
+  height: calc(100vh - 32px);
+
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
+}
+
+#clock_text {
   font-family: "space-grotesk-variable", sans-serif;
   font-variation-settings: "wght" 700;
+
+  font-size: 64px;
 }
