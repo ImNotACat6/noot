@@ -29,7 +29,8 @@ body {
   width: 100vw;
   min-height: 100vh;
 
-  margin-left: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   font-family: "space-grotesk-variable", sans-serif;
   font-size: 10px;
@@ -38,11 +39,35 @@ body {
   box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
 
-table {
-  width: 100vw;
-}
-
 .title-text {
   font-variation-settings: "wght" 700;
-  font-size: 20px;
+  font-size: 16px;
+}
+
+
+table {
+  width: 100vw;
+  table-layout: fixed;
+  white-space: nowrap;
+  
+  border-collapse: collapse;
+}
+
+
+
+td:nth-child(1) {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td:nth-child(2) {
+  text-overflow: ellipsis;
+  width: 10px;
+  text-align: left;
+}
+
+td:nth-child(3) {
+  text-align: right;
+  text-align-last: right;
 }

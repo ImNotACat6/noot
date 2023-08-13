@@ -34,11 +34,16 @@ async function getSchedule() {
 };
 
 // Create text objects
-function title(string) {
+function title(string, bool) {
     const titleSpan = document.createElement("span");
     titleSpan.className = "title-text";
 
     const titleText = document.createTextNode(string);
+
+    if (bool) {
+        //titleText.className = "wrapped-text";
+    }
+
     titleSpan.appendChild(titleText);
 
     return titleSpan;
@@ -96,10 +101,14 @@ async function updateTable() {
     // Create header row
     const row0 = document.createElement("tr");
 
-    // Country name
+    // Country
     const country = document.createElement("td");
-    country.appendChild(title(race.Circuit.Location.country));
+    country.appendChild(title(race.Circuit.Location.country, true));
     row0.appendChild(country);
+
+    const empty = document.createElement("td")
+    empty.appendChild(document.createTextNode(""))
+    row0.appendChild(empty)
 
     // Date
     const dates = document.createElement("td")
