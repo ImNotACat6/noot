@@ -29,7 +29,7 @@ body {
   width: 100vw;
   min-height: 100vh;
 
-  margin-left: 20px;
+  margin-left: 16px;
 
   font-family: "space-grotesk-variable", sans-serif;
   color: var(--no-text-color);
