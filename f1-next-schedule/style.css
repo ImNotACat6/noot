@@ -32,17 +32,17 @@ body {
   margin-left: 20px;
 
   font-family: "space-grotesk-variable", sans-serif;
+  font-size: 10px;
   color: var(--no-text-color);
 
   box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
 
-#time_text {
-  font-variation-settings: "wght" 700;
-  font-size: 32px;
+table {
+  width: 100vw;
 }
 
-#date_text {
-  font-variation-settings: "wght" 300;
-  font-size: 16px;
+.title-text {
+  font-variation-settings: "wght" 700;
+  font-size: 20px;
 }
