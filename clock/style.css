@@ -1,7 +1,7 @@
 :root {
 	--no-bg-color: #FFFFFF;
-	--no-text-color: #f58f70;
-	--no-sec-color: #37352f;
+	--no-text-color: #474747;
+	--no-sec-color: #ffffff;
 	--no-border-color: #37352f;
 }
 
@@ -29,7 +29,7 @@ body {
   width: 100vw;
   min-height: 100vh;
 
-  margin-left: 16px;
+  margin-left: 20px;
 
   color: var(--no-text-color);
 
@@ -39,11 +39,14 @@ body {
   
 }
 
-#clock {
-  
-
+#time_text {
   font-family: "space-grotesk-variable", sans-serif;
   font-variation-settings: "wght" 700;
-
   font-size: 32px;
+}
+
+#date_text {
+  font-family: "space-grotesk-variable", sans-serif;
+  font-variation-settings: "wght" 300;
+  font-size: 16px;
 }

@@ -27,14 +27,16 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (ev
 function Time() {
 
   // Creating object of the Date class
-  var date = new Date();
+  var now = new Date();
  
-  // Get current hour
-  var hour = date.getHours();
-  // Get current minute
-  var minute = date.getMinutes();
-  // Get current second
-  var second = date.getSeconds();
+  // Get minutes, hours, seconds
+  var hour = now.getHours();
+  var minute = now.getMinutes();
+  var second = now.getSeconds();
+
+  // Get date
+  var dateOptions = {weekday: 'long', month: 'long', day: 'numeric' };
+  var date = now.toLocaleDateString("en-US", dateOptions);
  
   // Variable to store AM / PM
   var period = "";
@@ -62,8 +64,9 @@ function Time() {
   second = update(second);
  
   // Adding time elements to the div
-  document.getElementById("clock").innerText = hour + ":" + minute + ":" + second + " " + period;
- 
+  document.getElementById("time_text").innerText = hour + ":" + minute + ":" + second + " " + period;
+  document.getElementById("date_text").innerText = date
+
   // Set Timer to 1 sec (1000 ms)
   setTimeout(Time, 1000);
  }
