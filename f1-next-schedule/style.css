@@ -1,0 +1,48 @@
+:root {
+	--no-bg-color: #FFFFFF;
+	--no-text-color: #474747;
+	--no-sec-color: #ffffff;
+	--no-border-color: #37352f;
+}
+
+[theme="dark"] {
+	--no-bg-color: #252525; /*191919*/
+  --no-sec-color: #252525;
+	--no-text-color: #c3e7ff;
+	--no-border-color: #fff;
+}
+
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background: var(--no-bg-color);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  width: 100vw;
+  min-height: 100vh;
+
+  margin-left: 20px;
+
+  font-family: "space-grotesk-variable", sans-serif;
+  color: var(--no-text-color);
+
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
+}
+
+#time_text {
+  font-variation-settings: "wght" 700;
+  font-size: 32px;
+}
+
+#date_text {
+  font-variation-settings: "wght" 300;
+  font-size: 16px;
+}
