@@ -64,10 +64,11 @@ table {
   border-collapse: collapse;
 }
 
+/*
 td {
   border: 1px solid #FF1801;
 }
-
+*/
 
 td:nth-child(1) {
   width: 50%;
