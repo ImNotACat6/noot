@@ -106,13 +106,15 @@ async function updateTable() {
     country.appendChild(title(race.Circuit.Location.country, true));
     row0.appendChild(country);
 
-    const empty = document.createElement("td")
-    empty.appendChild(document.createTextNode(""))
-    row0.appendChild(empty)
-
     // Date
     const dates = document.createElement("td")
-    dates.appendChild(title(datesToDates(ele[0][1], ele[4][1])))
+
+    const datesDiv = document.createElement("div")
+    datesDiv.appendChild(title(datesToDates(ele[0][1], ele[4][1])))
+    datesDiv.id = "right"
+    
+    dates.appendChild(datesDiv)
+
     row0.appendChild(dates)
 
     tableBody.appendChild(row0);
@@ -128,15 +130,24 @@ async function updateTable() {
         name.appendChild(body(ele[i][0]))
         row.appendChild(name)
 
+        
+        const dayAndTime = document.createElement("td")
+
         // Day of event
-        const day = document.createElement("td")
+        const day = document.createElement("div")
         day.appendChild(body(dateToDay(ele[i][1])))
-        row.appendChild(day)
+        dayAndTime.appendChild(day)
 
         // Time of event
-        const time = document.createElement("td")
-        time.appendChild(body(dateToTime(ele[i][1])))
-        row.appendChild(time)
+        const time = document.createElement("div")
+        const timeDiv = document.createElement("div")
+        timeDiv.appendChild(body(dateToTime(ele[i][1])))
+        time.id = "right"
+        time.appendChild(timeDiv)
+        dayAndTime.appendChild(time)
+
+
+        row.appendChild(dayAndTime)
 
         tableBody.appendChild(row);
     }

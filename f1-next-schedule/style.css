@@ -27,6 +27,18 @@
   font-size: 16px;
 }
 
+div {
+  display: inline;
+  text-align: left;
+}
+
+#right {
+  display: inline;
+  text-align: right;
+  float: right;
+  direction: ltr;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -48,8 +60,13 @@ table {
   width: 100%;
   table-layout: fixed;
   white-space: nowrap;
+
+  border-collapse: collapse;
 }
 
+td {
+  border: 1px solid #FF1801;
+}
 
 
 td:nth-child(1) {
@@ -59,12 +76,7 @@ td:nth-child(1) {
 }
 
 td:nth-child(2) {
-  text-overflow: ellipsis;
-  width: 10px;
   text-align: left;
-}
-
-td:nth-child(3) {
-  text-align: right;
-  text-align-last: right;
+  text-align-last: left;
+  direction: rtl;
 }
