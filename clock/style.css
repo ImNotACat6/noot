@@ -12,8 +12,6 @@
 	--no-border-color: #fff;
 }
 
-
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -26,10 +24,10 @@ body {
   align-items: center;
   justify-content: left;
 
-  width: 100vw;
   min-height: 100vh;
 
   margin-left: 16px;
+  margin-right: 16px;
 
   font-family: "space-grotesk-variable", sans-serif;
   color: var(--no-text-color);
