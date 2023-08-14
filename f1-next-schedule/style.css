@@ -21,16 +21,21 @@
   background: var(--no-bg-color);
 }
 
+.title-text {
+  font-variation-settings: "wght" 700;
+  
+  font-size: 16px;
+}
+
 body {
   display: flex;
   align-items: center;
   justify-content: left;
 
-  width: 100vw;
   min-height: 100vh;
 
-  padding-left: 16px;
-  padding-right: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
 
   font-family: "space-grotesk-variable", sans-serif;
   font-size: 10px;
@@ -39,19 +44,10 @@ body {
   box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
 
-.title-text {
-  font-variation-settings: "wght" 700;
-  
-  font-size: 16px;
-}
-
-
 table {
   width: 100vw;
   table-layout: fixed;
   white-space: nowrap;
-  
-  border-collapse: collapse;
 }
 
 
