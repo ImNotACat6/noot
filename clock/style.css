@@ -8,7 +8,7 @@
 [theme="dark"] {
 	--no-bg-color: #252525; /*191919*/
   --no-sec-color: #252525;
-	--no-text-color: #d4d4d4;
+	--no-text-color: #ffffff; /*d4d4d4*/
 	--no-border-color: #fff;
 }
 
