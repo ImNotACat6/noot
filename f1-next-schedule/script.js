@@ -67,7 +67,7 @@ function datesToDates(date1, date2) {
     const month = date1.toLocaleDateString("en-US", {month: "short"})
     const part1 = date1.toLocaleDateString("en-US", {day: "numeric"})
     const part2 = date2.toLocaleDateString("en-US", {day: "numeric"})
-    return [month + " ", part1 + "-", part2];
+    return [month, " "+part1 + "-", part2];
 }
 
 
@@ -79,18 +79,19 @@ async function drawTable() {
 
     // Convert element data
     var ele = []
+
     if (race.Sprint) {
-        ele[0] = ["Practice 1", strToDate(race.FirstPractice)]
-        ele[1] = ["Qualifying", strToDate(race.Qualifying)]
-        ele[2] = ["Sprint Shootout", strToDate(race.SecondPractice)]
-        ele[3] = ["Sprint", strToDate(race.Sprint)]
-        ele[4] = ["Race", strToDate(race)]
+        ele[0] = ["Practice 1", "FP1", strToDate(race.FirstPractice)]
+        ele[1] = ["Qualifying", "Quali", strToDate(race.Qualifying)]
+        ele[2] = ["Sprint Shootout", "Shootout", strToDate(race.SecondPractice)]
+        ele[3] = ["Sprint", "Sprint", strToDate(race.Sprint)]
+        ele[4] = ["Race", "Race", strToDate(race)]
     } else {
-        ele[0] = ["Practice 1", strToDate(race.FirstPractice)]
-        ele[1] = ["Practice 2", strToDate(race.SecondPractice)]
-        ele[2] = ["Practice 3", strToDate(race.ThirdPractice)]
-        ele[3] = ["Qualifying", strToDate(race.Qualifying)]
-        ele[4] = ["Race", strToDate(race)]
+        ele[0] = ["Practice 1", "FP1", strToDate(race.FirstPractice)]
+        ele[1] = ["Practice 2", "FP2", strToDate(race.SecondPractice)]
+        ele[2] = ["Practice 3", "FP3", strToDate(race.ThirdPractice)]
+        ele[3] = ["Qualifying", "Quali", strToDate(race.Qualifying)]
+        ele[4] = ["Race", "Race", strToDate(race)]
     }
 
     
@@ -107,7 +108,7 @@ async function drawTable() {
 
     // Header dates
     const dates = document.createElement("th")
-    const datesStrings = datesToDates(ele[0][1], ele[4][1])
+    const datesStrings = datesToDates(ele[0][2], ele[4][2])
 
     const month = title(datesStrings[0])
     month.className = "month"
@@ -128,27 +129,37 @@ async function drawTable() {
         const row = document.createElement("tr");
 
         // Name of event
-        const name = document.createElement("td")
+        const nameContainer = document.createElement("td")
+
+        const name = document.createElement("span")
         name.appendChild(body(ele[i][0]))
-        row.appendChild(name)
+        name.className = "LG_body"
+        nameContainer.appendChild(name)
+
+        const SM_name = document.createElement("span")
+        SM_name.appendChild(body(ele[i][1]))
+        SM_name.className = "SM_body"
+        nameContainer.appendChild(SM_name)
+
+        row.appendChild(nameContainer)
 
         // Day and time container
         const dayAndTime = document.createElement("td")
 
         // Day of event
         const day = document.createElement("span")
-        day.appendChild(body(dateToDay(ele[i][1], "short")))
+        day.appendChild(body(dateToDay(ele[i][2], "short")))
         day.className = "day"
         dayAndTime.appendChild(day)
 
         const SM_day = document.createElement("span")
-        SM_day.appendChild(body(dateToDay(ele[i][1], "narrow")))
+        SM_day.appendChild(body(dateToDay(ele[i][2], "narrow")))
         SM_day.className = "SM_day"
         dayAndTime.appendChild(SM_day)
 
         // Time of event
         const time = document.createElement("span")
-        time.appendChild(body(dateToTime(ele[i][1])))
+        time.appendChild(body(dateToTime(ele[i][2])))
         time.className = "body-right"
         dayAndTime.appendChild(time)
 

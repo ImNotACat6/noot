@@ -96,16 +96,24 @@ td:nth-child(2) {
   .SM_day {
     display: none;
   }
+  .SM_body {
+    display: none;
+  }
 }
 
 /* support for SM widths */
 @media (max-width: 200px) {
   th:nth-child(1) {
-    width: 52%;
-    text-overflow: initial;
+    width: 33%;
     overflow: visible;
+    text-overflow: ellipsis;
   }
-  .day {
+
+  .LG_body {
+    display: none;
+  }
+  
+  .SM_day {
     display: none;
   }
   .month {
