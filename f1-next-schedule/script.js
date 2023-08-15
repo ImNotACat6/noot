@@ -54,7 +54,11 @@ function strToDate(event) {
     return date;
 }
 function dateToDay(date, string) {
-    return date.toLocaleDateString("en-US", {weekday: string})
+    var x = date.toLocaleDateString("en-US", {weekday: string})
+    if (string == "narrow" && date.toLocaleDateString("en-US", {weekday: "short"}) == "Sun") {
+        x = "Su"
+    }
+    return x
 }
 function dateToTime(date) {
     return date.toLocaleTimeString("en-US", {hour: "numeric", minute: "2-digit"})
