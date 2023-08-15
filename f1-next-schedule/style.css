@@ -3,8 +3,8 @@
 	--no-text-color: #FF1801;
 	--no-sec-color: #ffffff;
 	--no-border-color: #37352f;
-}
 
+}
 [theme="dark"] {
 	--no-bg-color: #252525; /*191919 252525*/
   --no-sec-color: #ff8f85;
@@ -19,24 +19,6 @@
   padding: 0;
   margin: 0;
   background: var(--no-bg-color);
-}
-
-.title-text {
-  font-variation-settings: "wght" 700;
-  
-  font-size: 16px;
-}
-
-div {
-  display: inline;
-  text-align: left;
-}
-
-#right {
-  display: inline;
-  text-align: right;
-  float: right;
-  direction: ltr;
 }
 
 body {
@@ -64,20 +46,69 @@ table {
   border-collapse: collapse;
 }
 
-/*
+th {
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  font-variation-settings: "wght" 700;
+  font-size: 16px;
+}
+
 td {
+  white-space: nowrap;
+}
+
+.body-right {
+  float: right;
+  direction: ltr;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.title-right {
+  text-align: right;
+  direction: rtl;
+  
+  overflow: visible;
+}
+
+/* debug*/
+td, th {
   border: 1px solid #FF1801;
 }
-*/
+
 
 td:nth-child(1) {
   width: 50%;
-  overflow: hidden;
+  overflow: visible;
   text-overflow: ellipsis;
 }
 
 td:nth-child(2) {
   text-align: left;
-  text-align-last: left;
   direction: rtl;
+  overflow: visible;
+}
+
+/* remove SM on LG screns*/
+@media (min-width: 200px) {
+  .SM_day {
+    display: none;
+  }
+}
+
+/* support for SM widths */
+@media (max-width: 200px) {
+  th:nth-child(1) {
+    width: 52%;
+    text-overflow: initial;
+    overflow: visible;
+  }
+  .day {
+    display: none;
+  }
+  .month {
+    display: none;
+  }
 }

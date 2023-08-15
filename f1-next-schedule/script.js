@@ -37,13 +37,8 @@ async function getSchedule() {
 function title(string, bool) {
     const titleSpan = document.createElement("span");
     titleSpan.className = "title-text";
-
+    
     const titleText = document.createTextNode(string);
-
-    if (bool) {
-        //titleText.className = "wrapped-text";
-    }
-
     titleSpan.appendChild(titleText);
 
     return titleSpan;
@@ -58,24 +53,25 @@ function strToDate(event) {
     const date = new Date(event.date+" "+event.time);
     return date;
 }
-function dateToDay(date) {
-    return date.toLocaleDateString("en-US", {weekday: "short"})
+function dateToDay(date, string) {
+    return date.toLocaleDateString("en-US", {weekday: string})
 }
 function dateToTime(date) {
-    return date.toLocaleTimeString("en-US", {hour: "2-digit", minute: "2-digit"})
+    return date.toLocaleTimeString("en-US", {hour: "numeric", minute: "2-digit"})
 }
 function datesToDates(date1, date2) {
-    const part1 = date1.toLocaleDateString("en-US", {month: "short", day: "numeric"})
+    const month = date1.toLocaleDateString("en-US", {month: "short"})
+    const part1 = date1.toLocaleDateString("en-US", {day: "numeric"})
     const part2 = date2.toLocaleDateString("en-US", {day: "numeric"})
-    return part1+"-"+part2;
+    return [month + " ", part1 + "-", part2];
 }
 
+
 // Generate table
-async function updateTable() {
+async function drawTable() {
 
     // Get API data
     const race = await getSchedule();
-    console.log(race);
 
     // Convert element data
     var ele = []
@@ -93,31 +89,33 @@ async function updateTable() {
         ele[4] = ["Race", strToDate(race)]
     }
 
+    
+
     // Create table
     const table = document.createElement("table");
+    table.id = "widget-table"
     const tableBody = document.createElement("tbody");
 
-
-    // Create header row
-    const row0 = document.createElement("tr");
-
-    // Country
-    const country = document.createElement("td");
+    // Header country
+    const country = document.createElement("th");
     country.appendChild(title(race.Circuit.Location.country, true));
-    row0.appendChild(country);
+    table.appendChild(country);
 
-    // Date
-    const dates = document.createElement("td")
+    // Header dates
+    const dates = document.createElement("th")
+    const datesStrings = datesToDates(ele[0][1], ele[4][1])
 
-    const datesDiv = document.createElement("div")
-    datesDiv.appendChild(title(datesToDates(ele[0][1], ele[4][1])))
-    datesDiv.id = "right"
+    const month = title(datesStrings[0])
+    month.className = "month"
+    dates.appendChild(month)
+
+    dates.appendChild(title(datesStrings[1]))
+    dates.appendChild(title(datesStrings[2]))
+    dates.className = "title-right"
+    table.appendChild(dates)
+
+
     
-    dates.appendChild(datesDiv)
-
-    row0.appendChild(dates)
-
-    tableBody.appendChild(row0);
 
 
     // Create events
@@ -130,22 +128,25 @@ async function updateTable() {
         name.appendChild(body(ele[i][0]))
         row.appendChild(name)
 
-        
+        // Day and time container
         const dayAndTime = document.createElement("td")
 
         // Day of event
-        const day = document.createElement("div")
-        day.appendChild(body(dateToDay(ele[i][1])))
+        const day = document.createElement("span")
+        day.appendChild(body(dateToDay(ele[i][1], "short")))
+        day.className = "day"
         dayAndTime.appendChild(day)
 
-        // Time of event
-        const time = document.createElement("div")
-        const timeDiv = document.createElement("div")
-        timeDiv.appendChild(body(dateToTime(ele[i][1])))
-        time.id = "right"
-        time.appendChild(timeDiv)
-        dayAndTime.appendChild(time)
+        const SM_day = document.createElement("span")
+        SM_day.appendChild(body(dateToDay(ele[i][1], "narrow")))
+        SM_day.className = "SM_day"
+        dayAndTime.appendChild(SM_day)
 
+        // Time of event
+        const time = document.createElement("span")
+        time.appendChild(body(dateToTime(ele[i][1])))
+        time.className = "body-right"
+        dayAndTime.appendChild(time)
 
         row.appendChild(dayAndTime)
 
@@ -157,5 +158,6 @@ async function updateTable() {
     document.body.appendChild(table);
 
     //setTimeout(Time, 1000);
+    return table;
 }
-updateTable();
+const table = drawTable();
