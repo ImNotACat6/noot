@@ -73,11 +73,11 @@ td {
   overflow: visible;
 }
 
-/* debug*/
+/* debug
 td, th {
   border: 1px solid #FF1801;
 }
-
+*/
 
 td:nth-child(1) {
   width: 50%;
